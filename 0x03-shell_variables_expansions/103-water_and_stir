@@ -1,0 +1,2 @@
+#!/bin/bash
+echo $(( $(echo "ibase=16; $WATER" | tr a-f A-F) + $(echo "ibase=16; $STIR" | tr a-f A-F) )) | awk '{ n=$1; while(n!=0){d=n%8; n=int(n/8); printf "%d",d;} }{if(!length($0))print 0;}' | tac | sed 's/^0*//g' | tr -d '\n' && echo
